@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+
+{% block start %}
+
+<section class="position-relative py-6">
+    <img class="bg-image" src="https://in.godaddy.com/blog/wp-content/uploads/how-to-start-a-fitness-blog-kettle-bell.jpg" alt="">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="bg-white rounded-lg shadow p-5"><strong class="text-uppercase text-secondary d-inline-block mb-2 text-sm">Featured</strong>
+            <h2 class="mb-3">Sura Fitness</h2>
+            <p class="text-muted">Hello This is an open community forum, where anyone can write blogs about Physical & Mental Well Being, Lifestyles etc. Happy Reading & Writing Folks"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-6">
+    <div class="container">
+      <div class="row mb-5">
+        <!-- blog item-->
+        {% for blog in blogs %}
+        <div class="col-lg-4 col-sm-6 mb-4 hover-animate">
+          <div class="card shadow border-0 h-100">
+            <a href="{% url 'blog_detail' blog.slug %}"><img class="img-fluid card-img-top" src="/media/{{blog.image}}" alt="..."/></a>
+            <div class="card-body">
+              <a class="text-uppercase text-muted text-sm letter-spacing-2" href="{% url 'blog_detail' blog.slug %}">{{blog.user.username}} </a>
+              <h5 class="my-2">
+                <a class="text-dark" href="{% url 'blog_detail' blog.slug %}">{{blog.title}}</a></h5>
+              <p class="text-gray-500 text-sm my-3"><i class="far fa-clock mr-2"></i>{{blog.created_at}}</p>
+
+              <div class="collapse">
+                <div class="col text-truncate">
+                  <p class="my-2 text-muted text-sm">{{blog.content|safe}}</p>
+                </div>
+              </div>
+
+
+              <style>
+                .container2 {
+    padding: 50px;
+    text-align: center;
+  }
+  
+  /* Solid Social Share Buttons */
+  
+  .btn-social,
+  .btn-social:visited,
+  .btn-social:focus,
+  .btn-social:hover,
+  .btn-social:active {
+    color: #ffffff;
+    text-decoration: none;
+    transition: opacity .15s ease-in-out;
+  }
+  
+  .btn-social:hover,
+  .btn-social:active {
+   opacity: .75;
+  }
+  
+  .btn-fb {
+    background-color: #3b5998;
+  }
+  
+  .btn-tw {
+    background-color: #1da1f2;
+  }
+  
+  .btn-in {
+    background-color: #0077b5;
+  }
+  
+  .btn-gp {
+    background-color: green;
+  }
+  
+  .btn-rd {
+    background-color: #ff4500;
+  }
+  
+  .btn-hn {
+    background-color: #ff4000;
+  }
+  
+  /* Outline Social Share Buttons */
+  
+  .btn-social-outline {
+    background-color: transparent;
+    background-image: none;
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+  }
+  
+  .btn-fb-outline {
+    color: #3b5998;
+    border-color: #3b5998;
+  }
+  
+  .btn-fb-outline:hover,
+  .btn-fb-outline:active {
+    color: #ffffff;
+    background-color: #3b5998;
+  }
+  
+  .btn-tw-outline {
+    color: #1da1f2;
+    border-color: #1da1f2;
+  }
+  
+  .btn-tw-outline:hover,
+  .btn-tw-outline:active {
+    color: #ffffff;
+    background-color: #1da1f2;
+  }
+  
+  .btn-in-outline {
+    color: #0077b5;
+    border-color: #0077b5;
+  }
+  
+  .btn-in-outline:hover,
+  .btn-in-outline:active {
+    color: #ffffff;
+    background-color: #0077b5;
+  }
+  
+  .btn-gp-outline {
+    color: #db4437;
+    border-color: #db4437;
+  }
+  
+  .btn-gp-outline:hover,
+  .btn-gp-outline:active {
+    color: #ffffff;
+    background-color: #db4437;
+  }
+  
+  .btn-rd-outline {
+    color: #ff4500;
+    border-color: #ff4500;
+  }
+  
+  .btn-rd-outline:hover,
+  .btn-rd-outline:active {
+    color: #ffffff;
+    background-color: #ff4500;
+  }
+  
+  .btn-hn-outline {
+    color: #ff4000;
+    border-color: #ff4000;
+  }
+  
+  .btn-hn-outline:hover,
+  .btn-hn-outline:active {
+    color: #ffffff;
+    background-color: #ff4000;
+  }
+  
+  /* Fluid Styles */
+  
+  .fluid {
+    display: flex;
+  }
+  
+  .fluid a {
+    flex-grow: 1;
+    margin-right: 0.25rem;
+  }
+  
+  .fluid a:last-child {
+    margin-right: 0rem;
+  }
+                </style>
+              
+
+
+
+              <div class="container2">
+                
+                <div>
+                  <a class="btn btn-sm btn-social btn-fb" href="https://www.facebook.com/sharer/sharer.php?u={% url 'blog_detail' blog.slug %}" target="_blank" title="Share this post on Facebook">
+                      <i class="fab fa-facebook-square"></i>
+                  </a>
+                    <a class="btn btn-sm btn-social btn-tw" href="https://twitter.com/intent/tweet?text=PAGE_TITLE&amp;url=PAGE_URL" target="_blank" title="Share this post on Twitter">
+                      <i class="fab fa-twitter"></i>
+                  </a>
+                  <a class="btn btn-sm btn-social btn-in" href="https://www.linkedin.com/shareArticle?mini=true&url=PAGE_URL&amp;title=PAGE_TITLE" target="_blank" title="Share this post on LinkedIn">
+                    <i class="fab fa-linkedin-in" data-fa-transform="grow-2"></i>
+                  </a>
+                  <a class="btn btn-sm btn-social btn-gp" href="https://plus.google.com/share?url=PAGE_URL" target="_blank" title="Share this post on Google Plus">
+                    <i class="fab fa-whatsapp" data-fa-transform="grow-2"></i>
+                  </a>
+                  <a class="btn btn-sm btn-social btn-rd" href="https://www.reddit.com/submit?url=PAGE_URL&title=PAGE_TITLE" target="_blank" title="Share this post on Reddit">
+                    <i class="fab fa-reddit-alien" data-fa-transform="grow-4"></i>
+                  </a>
+                  
+                </div>
+              <a class="btn btn-link pl-0" href="{% url 'blog_detail' blog.slug %}">Read more<i class="fa fa-long-arrow-alt-right ml-2"></i></a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      
+    
+      
+      
+      </div>
+      <!-- Pagination -->
+      <nav aria-label="Blog pagination">
+        <ul class="pagination justify-content-between mb-5">
+          <li class="page-item"><a class="page-link text-sm rounded" href="#"> <i class="fa fa-chevron-left mr-1"></i>Older posts</a></li>
+          <li class="page-item disabled"><a class="page-link text-sm rounded" href="#" tabindex="-1">Newer posts  <i class="fa fa-chevron-right ml-1"></i></a></li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+{% endblock %}
